@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks_tutorial/src/widgets/counter.dart';
-import 'package:flutter_hooks_tutorial/src/widgets/create_account.dart';
+import 'package:flutter_hooks_tutorial/src/widgets/formwidget.dart';
 import 'package:flutter_hooks_tutorial/src/widgets/home.dart';
 import 'package:flutter_hooks_tutorial/src/widgets/scrollwidget.dart';
 
@@ -19,7 +19,7 @@ class Routes {
       case counter:
         return _buildRoute(CounterWidget());
       case createAccount:
-        return _buildRoute(CreateAccount());
+        return _buildRoute(FormWidget());
       case scroll:
         return _buildRoute(ScrollWidget());
       default:

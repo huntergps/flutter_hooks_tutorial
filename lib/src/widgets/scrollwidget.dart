@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 final _red = new GlobalKey();
 final _blue = new GlobalKey();
@@ -6,26 +7,12 @@ final _yellow = new GlobalKey();
 final _green = new GlobalKey();
 final _orange = new GlobalKey();
 
-class ScrollWidget extends StatefulWidget {
-  static Widget create(BuildContext context) => ScrollWidget();
-
-  @override
-  _ScrollWidgetState createState() => _ScrollWidgetState();
-}
-
-class _ScrollWidgetState extends State<ScrollWidget> {
-  final _controller = ScrollController();
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
+class ScrollWidget extends HookWidget {
   void scrollTo(GlobalKey key) => Scrollable.ensureVisible(key.currentContext!, duration: Duration(milliseconds: 500));
 
   @override
   Widget build(BuildContext context) {
+    final _controller = useScrollController();
     final containerHeight = MediaQuery.of(context).size.height * .80;
 
     return Scaffold(

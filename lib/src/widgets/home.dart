@@ -20,7 +20,7 @@ class HomeWidget extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () => Navigator.pushNamed(context, Routes.createAccount),
-              child: Text('Create account form'),
+              child: Text('Form'),
             ),
             ElevatedButton(
               onPressed: () => Navigator.pushNamed(context, Routes.scroll),

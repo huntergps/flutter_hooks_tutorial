@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class CounterWidget extends StatefulWidget {
-  @override
-  _CounterWidgetState createState() => _CounterWidgetState();
-}
-
-class _CounterWidgetState extends State<CounterWidget> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+class CounterWidget extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    final _counter = useState<int>(0);
     return Scaffold(
       appBar: AppBar(
         title: Text('Counter'),
@@ -26,14 +15,14 @@ class _CounterWidgetState extends State<CounterWidget> {
           children: <Widget>[
             Text('You have pushed the button this many times:'),
             Text(
-              '$_counter',
+              '${_counter.value}',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () => _counter.value += 1,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
