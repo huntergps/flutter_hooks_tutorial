@@ -13,7 +13,15 @@ class ScrollWidget extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final _controller = useScrollController();
-    final containerHeight = MediaQuery.of(context).size.height * .80;
+
+    // How to set a listener: https://stackoverflow.com/a/63832263/3479489
+    useEffect(() {
+      print('This will be called only one time');
+      _controller.addListener(() => print('Scroll Position: ${_controller.position.pixels}'));
+      return _controller.dispose;
+    }, [_controller]);
+
+    final containerHeight = MediaQuery.of(context).size.height * .80; // 80% of the height
 
     return Scaffold(
       appBar: AppBar(
